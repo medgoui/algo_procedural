@@ -1,0 +1,88 @@
+FUNCTION read_size() : INTEGER
+VAR
+    n : INTEGER;
+BEGIN
+    REPEAT
+        Read(n)
+    UNTIL (n<=0 OR n>100)
+    RETURN n;
+END
+
+
+PROCEDURE read_tab(T: ARRAY_OF FLOAT, n : INTEGER)
+VAR
+    i : INTEGER;
+BEGIN
+    FOR i FROM 0 TO n-1 DO
+        Read(T[i]);
+    END_FOR
+END
+
+
+PROCEDURE dot_product(t1,t2: ARRAY_OF FLOAT, n: INTEGER)
+VAR
+    i,product: INTEGER;
+BEGIN
+    FOR i FROM 0 TO n-1 DO
+        product = product + t1[i] * t2[i];
+    END_FOR
+    Write("Product of two vectors is",product);
+    dot.insert(0,product);
+END
+
+
+ALGORITHM procedural_programming
+VAR
+    N : INTEGER;
+    vect1 : ARRAY_OF FLOAT[N];
+    vect2 : ARRAY_OF FLOAT[N];
+    dot:HASH_TABLE<INTEGER,INTEGER>;
+BEGIN
+    Write("Give the length of array");
+    N := read_size();
+    Write("Give the first vector");
+    read_tab(vect1, N);
+    Write("Give the second vector");
+    read_tab(vect2, N);
+    dot_product(vect1, vect2, N);
+    IF (dot.get(0) = 0) THEN
+        Write("Two vectors are orthogonal");
+    ELSE
+        Write("Two vectors are not orthogonal");
+    END_IF
+END
+
+// procedure dot_product on function
+FUNCTION dot_product(t1,t2: ARRAY_OF FLOAT, n: INTEGER) : INTEGER
+VAR
+    i,product: INTEGER;
+BEGIN
+    FOR i FROM 0 TO n-1 DO
+        product = product + t1[i] * t2[i];
+    END_FOR
+    RETURN product;
+END
+
+//algo principal after function dot
+ALGORITHM procedural_programming
+VAR
+    N : INTEGER;
+    vect1 : ARRAY_OF FLOAT[N];
+    vect2 : ARRAY_OF FLOAT[N];
+    dot:HASH_TABLE<INTEGER,INTEGER>;
+    product : INTEGER;
+BEGIN
+    Write("Give the length of array");
+    N := read_size();
+    Write("Give the first vector");
+    read_tab(vect1, N);
+    Write("Give the second vector");
+    read_tab(vect2, N);
+    product := dot_product(vect1, vect2, N);
+    Write("Product of two vectors is",product);
+    dot.insert(0,product);
+    IF (dot.get(0) = 0) THEN
+        Write("Two vectors are orthogonal");
+    ELSE
+        Write("Two vectors are not orthogonal");
+    EN
