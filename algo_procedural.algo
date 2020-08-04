@@ -19,7 +19,7 @@ BEGIN
 END
 
 
-PROCEDURE dot_product(t1,t2: ARRAY_OF FLOAT, n: INTEGER)
+PROCEDURE dot_product(t1,t2: ARRAY_OF FLOAT,VAR dot, n: INTEGER)
 VAR
     i,product: INTEGER;
 BEGIN
@@ -44,7 +44,7 @@ BEGIN
     read_tab(vect1, N);
     Write("Give the second vector");
     read_tab(vect2, N);
-    dot_product(vect1, vect2, N);
+    dot_product(vect1, vect2,dot, N);
     IF (dot.get(0) = 0) THEN
         Write("Two vectors are orthogonal");
     ELSE
